@@ -26,4 +26,16 @@ export class ProductService {
   read(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl);
   }
+
+  readById(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.baseUrl}/${id}`);
+  }
+
+  update(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.baseUrl}/${product.id}`, product);
+  }
+
+  delete(id: number): Observable<Product> {
+    return this.http.delete<Product>(`${this.baseUrl}/${id}`);
+  }
 }
